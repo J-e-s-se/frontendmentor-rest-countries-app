@@ -1,6 +1,6 @@
 const Heading = ({ switchTheme }: { switchTheme: () => void }) => {
   return (
-    <div className="shadow-bottom">
+    <div className="shadow-bottom bg-white dark:bg-dark-blue">
       <div className="mx-auto container h-20 flex items-center justify-between">
         <h2 className="font-[800] sm:text-2xl">Where in the world?</h2>
         <div
