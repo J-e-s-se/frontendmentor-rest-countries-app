@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { CountryDetail } from './types'
+import { Country } from '../types'
 
-const useCountries = () => {
-  const [countries, setCountries] = useState<CountryDetail[]>([])
+export const useCountries = () => {
+  const [countries, setCountries] = useState<Country[]>([])
   const [filter, setFilter] = useState<string>('')
   const [search, setSearch] = useState<string>('')
 
-  const [shownCountries, setShownCountries] = useState<CountryDetail[]>([])
+  const [shownCountries, setShownCountries] = useState<Country[]>([])
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const { data: countryFromApi } = await axios.get<CountryDetail[]>(
+        const { data: countryFromApi } = await axios.get<Country[]>(
           'https://restcountries.com/v2/all'
         )
         setCountries(countryFromApi)
         setShownCountries(countryFromApi)
-        console.log('Countries fetched')
+        // console.log('Countries fetched')
       } catch (e) {
         console.log('error', e)
       }
@@ -24,21 +24,16 @@ const useCountries = () => {
     fetchCountries()
   }, [])
 
-  const computeShownCountries = (
-    filterString = filter,
-    searchString = search
-  ) => {
-    console.log('filterString', filterString, '\nsearch', search)
-    const filterResult = filterString
-      ? countries.filter((c) => c.region === filterString)
+  useEffect(() => {
+    const filterResult = filter
+      ? countries.filter((c) => c.region === filter)
       : countries
 
     const searchResult = filterResult.filter((f) =>
-      f.name.toLowerCase().includes(searchString.toLowerCase())
+      f.name.toLowerCase().includes(search.toLowerCase())
     )
-    console.log('\nfilterResult', filterResult, '\nsearchResult', searchResult)
     setShownCountries(searchResult)
-  }
+  }, [filter, search])
 
   const getRegions = () => {
     return countries.reduce((regions: string[], country) => {
@@ -62,11 +57,8 @@ const useCountries = () => {
     filter,
     setFilter,
 
-    getRegions,
     shownCountries,
-    computeShownCountries,
+    getRegions,
     getCountryName,
   }
 }
-
-export default useCountries

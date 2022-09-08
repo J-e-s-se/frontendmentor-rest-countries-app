@@ -1,14 +1,12 @@
-import CountriesList from './Home/CountriesList'
-import Heading from './Heading'
+import CountriesList from './pages/CountriesList'
+import Heading from './components/Heading'
 import { Routes, Route, useMatch } from 'react-router-dom'
-import CountriesDetail from './Home/CountriesDetail'
-import MainContainer from './Home/components/MainContainer'
-import useCountries from './Home/useCountries'
-import useTheme from './Home/useTheme'
+import CountriesDetail from './pages/CountriesDetail'
+import MainContainer from './components/MainContainer'
+import { useCountries, useTheme } from './hooks'
 const App = () => {
   const {
     search,
-    computeShownCountries,
     setSearch,
     shownCountries,
     filter,
@@ -36,7 +34,6 @@ const App = () => {
               element={
                 <CountriesList
                   search={search}
-                  computeShownCountries={computeShownCountries}
                   setSearch={setSearch}
                   shownCountries={shownCountries}
                   filter={filter}

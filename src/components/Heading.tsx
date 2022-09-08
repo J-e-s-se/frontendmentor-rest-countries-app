@@ -1,7 +1,7 @@
 const Heading = ({ switchTheme }: { switchTheme: () => void }) => {
   return (
     <div className="shadow-bottom">
-      <div className="mx-auto container h-20 flex items-center justify-between px-4 ">
+      <div className="mx-auto container h-20 flex items-center justify-between">
         <h2 className="font-[800] sm:text-2xl">Where in the world?</h2>
         <div
           className="font-[600] text-sm sm:text-base flex items-center cursor-pointer"

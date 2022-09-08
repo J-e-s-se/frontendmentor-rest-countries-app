@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { CountryDetail } from './types'
+import { Country } from '../types'
 const CountriesDetail = ({
   countryDetail,
   getCountryName,
 }: {
-  countryDetail: CountryDetail | undefined
+  countryDetail: Country | undefined
   getCountryName: (a3code: string) => string
 }) => {
   if (!countryDetail) {

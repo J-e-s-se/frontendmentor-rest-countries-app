@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme") 
+
 module.exports = {
   content: [
     "./index.html",
@@ -20,6 +23,19 @@ module.exports = {
       boxShadow: {
         'bottom': '0 7px 5px -5px rgb(0 0 0 / 0.1)'
       }
+    },
+
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+    },
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        xs: '2rem',
+        xl: '3rem',
+        '2xl': '6rem',
+      },
     },
   },
   plugins: [],

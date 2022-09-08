@@ -1,23 +1,21 @@
-import CountryCard from './components/CountryCard'
-import { CountryDetail } from './types'
-import Filter from './components/Filter'
+import CountryCard from '../components/CountryCard'
+import { Country } from '../types'
+import RegionSelect from '../components/RegionSelect'
 import React from 'react'
 
 interface CountriesListProps {
   search: string
-  computeShownCountries: (filterString?: string, searchString?: string) => void
   setSearch: React.Dispatch<React.SetStateAction<string>>
-  shownCountries: CountryDetail[]
+  shownCountries: Country[]
   filter: string
   setFilter: React.Dispatch<React.SetStateAction<string>>
   getRegions: () => string[]
 }
 const CountriesList = ({
   search,
-  computeShownCountries,
+  filter,
   setSearch,
   setFilter,
-  filter,
   getRegions,
   shownCountries,
 }: CountriesListProps) => {
@@ -46,16 +44,14 @@ const CountriesList = ({
             value={search}
             onChange={({ target }) => {
               setSearch(target.value)
-              computeShownCountries(undefined, target.value)
             }}
             placeholder="Search for a country..."
           />
         </div>
-        <Filter
-          filter={filter}
+        <RegionSelect
           setFilter={setFilter}
           getRegions={getRegions}
-          computeShownCountries={computeShownCountries}
+          filter={filter}
         />
       </div>
       <div className="flex flex-wrap mt-14 gap-[35px] justify-center sm:justify-start">
