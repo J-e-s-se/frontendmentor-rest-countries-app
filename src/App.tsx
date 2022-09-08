@@ -1,9 +1,8 @@
 import CountriesList from './pages/CountriesList'
-import Heading from './components/Heading'
 import { Routes, Route, useMatch } from 'react-router-dom'
 import CountriesDetail from './pages/CountriesDetail'
-import MainContainer from './components/MainContainer'
 import { useCountries, useTheme } from './hooks'
+import Layout from './components/Layout'
 const App = () => {
   const {
     search,
@@ -16,7 +15,7 @@ const App = () => {
     getCountryName,
   } = useCountries()
   const { theme, switchTheme } = useTheme()
-  const match = useMatch('/details/:code')
+  const match = useMatch('frontendmentor-rest-countries-app/details/:code')
   const codeString = match?.params.code
   const countryDetail = codeString
     ? countries.find((c) => c.alpha3Code === codeString.toUpperCase())
@@ -26,11 +25,13 @@ const App = () => {
   return (
     <div data-theme={theme}>
       <div className="font-nunito text-vdarkbluet dark:text-white bg-light-gray dark:bg-verydarkbluebg font-normal min-h-screen antialiased min-w-[320px]">
-        <Heading switchTheme={switchTheme} />
-        <MainContainer>
-          <Routes>
+        <Routes>
+          <Route
+            path="/frontendmentor-rest-countries-app/"
+            element={<Layout switchTheme={switchTheme} />}
+          >
             <Route
-              path="/"
+              path=""
               element={
                 <CountriesList
                   search={search}
@@ -43,7 +44,7 @@ const App = () => {
               }
             />
             <Route
-              path="/details/:code"
+              path="details/:code"
               element={
                 <CountriesDetail
                   countryDetail={countryDetail}
@@ -51,8 +52,8 @@ const App = () => {
                 />
               }
             />
-          </Routes>
-        </MainContainer>
+          </Route>
+        </Routes>
       </div>
     </div>
   )

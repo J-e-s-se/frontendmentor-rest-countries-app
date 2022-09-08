@@ -12,7 +12,7 @@ const CountryCard = ({
   flag
   return (
     <Link
-      to={`/details/${alpha3Code.toLowerCase()}`}
+      to={`details/${alpha3Code.toLowerCase()}`}
       className="w-full max-w-[280px] shadow-lg rounded-lg bg-white dark:bg-dark-blue text-vdarkbluet dark:text-light-gray sm:w-[266px] h-[366px]"
     >
       <img

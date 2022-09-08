@@ -26,7 +26,7 @@ const CountriesDetail = ({
   return (
     <div className="my-3 sm:my-8 ">
       <Link
-        to="/"
+        to="../"
         className="flex w-36 bg-white dark:bg-dark-blue h-12 items-center rounded-md shadow-md justify-between px-8"
       >
         <svg
@@ -99,7 +99,7 @@ const CountriesDetail = ({
             <div className="flex text-sm flex-wrap gap-1">
               {borders?.map((b) => (
                 <Link
-                  to={`/details/${b.toLowerCase()}`}
+                  to={`../details/${b.toLowerCase()}`}
                   className="rounded shadow px-6 py-2 whitespace-nowrap  bg-white dark:bg-dark-blue flex"
                   key={b}
                 >
